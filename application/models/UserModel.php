@@ -40,20 +40,26 @@ class UserModel extends CI_Model
         if ($this->db->delete('users')) {
             return [
                 'success'   => true,
-                'message'   => 'data berhasil dihapus'
+                'message'   => 'Penghapusan data berhasil dilakukan!'
             ];
         }
     }
 
     public function update($id, $data)
     {
-        $data = ['nama' => $data->nama];
+        $data = [
+            'nama' => $data->nama,
+            'email' => $data->email,
+            'no_hp' => $data->no_hp,
+            'pekerjaan' => $data->pekerjaan,
+        ];
+
 
         $this->db->where('id', $id);
         if ($this->db->update('users', $data)) {
             return [
                 'success'   => true,
-                'message'   => 'data berhasil diperbarui'
+                'message'   => 'Pembaruan data berhasil dilakukan!'
             ];
         }
     }
